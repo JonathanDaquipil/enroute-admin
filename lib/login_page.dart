@@ -37,35 +37,21 @@ class _LoginPageState extends State<LoginPage> {
       final email = emailController.text.trim();
       final password = passwordController.text.trim();
 
-      final snapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .where('email', isEqualTo: email)
-          .limit(1)
-          .get();
-
-      if (snapshot.docs.isEmpty) {
+      /// ✅ HARDCODED ADMIN LOGIN
+      if (email == "admin123@gmail.com" && password == "admin123") {
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Admin account not found')),
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const Layout()),
         );
         return;
       }
 
-      final userData = snapshot.docs.first.data();
-      final storedPassword = userData['password']?.toString() ?? '';
-
-      if (storedPassword != password) {
-        if (!mounted) return;
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('Incorrect password')));
-        return;
-      }
-
+      /// ❌ INVALID LOGIN
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const Layout()),
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid admin credentials')),
       );
     } catch (e) {
       if (!mounted) return;
