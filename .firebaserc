@@ -1,6 +1,7 @@
 {
   "projects": {
-    "enroute_admin": "enroute-29399"
+    "enroute_admin": "enroute-29399",
+    "default": "enroute-29399"
   },
   "targets": {},
   "etags": {}
