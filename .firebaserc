@@ -3,6 +3,14 @@
     "enroute_admin": "enroute-29399",
     "default": "enroute-29399"
   },
-  "targets": {},
+  "targets": {
+    "enroute-29399": {
+      "hosting": {
+        "admin": [
+          "enroute-admin-2026"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

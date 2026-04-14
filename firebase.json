@@ -11,7 +11,9 @@
       }
     }
   },
-  "hosting": {
+  "hosting": [
+  {
+    "target": "admin",
     "public": "build/web",
     "ignore": [
       "firebase.json",
@@ -25,4 +27,4 @@
       }
     ]
   }
-}
+  ]}
